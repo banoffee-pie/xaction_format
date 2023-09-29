@@ -19,7 +19,7 @@ async function run(): Promise<void> {
   }
 
   try {
-    await checkoutBranch(await getBranch());
+    //await checkoutBranch(await getBranch());
     await handler.handle(command);
   } catch (e) {
     core.setFailed(`An unexpected error occurred:\n ${e.message}`);

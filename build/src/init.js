@@ -5,6 +5,7 @@ exports.init = exports.hasBin = void 0;
 const exec_1 = require("@actions/exec");
 const constants_1 = require("./constants");
 const core = require("@actions/core");
+const authorisation_1 = require("./authorisation");
 async function hasBin(name) {
     return exec_1.exec('which', [name]).then((exitCode) => {
         if (exitCode)
@@ -46,6 +47,9 @@ function installPipPackages() {
     });
 }
 async function init() {
+    if (!authorisation_1.isCommenterAuthorised()) {
+        return;
+    }
     await ensureDependenciesResolved();
     await installPipPackages();
 }
