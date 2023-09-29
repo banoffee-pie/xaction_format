@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = require("@actions/core");
 const handlers_1 = require("./handlers/handlers");
-const git_commands_1 = require("./git-commands");
 const helpers_1 = require("./helpers");
 const init_1 = require("./init");
 async function run() {
@@ -16,7 +15,7 @@ async function run() {
         return;
     }
     try {
-        await git_commands_1.checkoutBranch(await helpers_1.getBranch());
+        //await checkoutBranch(await getBranch());
         await handler.handle(command);
     }
     catch (e) {
